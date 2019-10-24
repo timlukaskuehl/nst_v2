@@ -1,6 +1,6 @@
 from PIL import Image
 import matplotlib.pyplot as plt
-import numpy as np 
+import numpy as np hh
 
 import torch
 import torch.optim as optim 
