@@ -68,7 +68,7 @@ vgg = models.vgg19()
 vgg.load_state_dict(torch.load("vgg19-dcbb9e9d.pth")
 
 for param in vgg.parameters():
-  param.requires_grad_(False)
+    param.requires_grad_(False)
 
 for i, layer in enumerate(vgg.features):
   if isinstance(layer, torch.nn.MaxPool2d):
