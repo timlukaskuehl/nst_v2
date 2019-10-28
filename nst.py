@@ -68,7 +68,7 @@ torch.utils.model_zoo.load_url('https://download.pytorch.org/models/vgg19-dcbb9e
 vgg = models.vgg19()
 vgg.load_state_dict(torch.load("vgg19-dcbb9e9d.pth")
 
-for param in vgg.parameters():
+sfor param in vgg.parameters():
     param.requires_grad_(False)
 
 for i, layer in enumerate(vgg.features):
