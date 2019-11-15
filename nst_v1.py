@@ -1,4 +1,5 @@
 from __future__ import print_function
+import tkinter as tk
 
 import torch
 import torch.nn as nn
@@ -25,6 +26,8 @@ def image_loader(image_name):
     image = Image.open(image_name)
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
+
+
 
 
 style_img = image_loader("images/starrynight.jpg")
