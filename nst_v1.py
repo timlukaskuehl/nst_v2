@@ -31,11 +31,15 @@ def image_loader(image_name):
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
+#connecting the database
+conn = sqlite3.connect('pictures.db')
+cursor = conn.cursor()
 
-
+#create the table in the database
+cursor.execute("""CREATE TABLE IF NOT EXISTS images_table (name TEXT,image BLOP)""")
 
 style_img = image_loader("images/starrynight.jpg")
-content_img = image_loader("images/llama.jpg")
+content_img = image_loader("images/fox.jpg")
 
 assert style_img.size() == content_img.size(), \
     "You have to to import style and content images of the same size"
