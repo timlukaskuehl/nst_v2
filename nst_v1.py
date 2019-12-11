@@ -14,9 +14,9 @@ import torchvision.models as models
 
 import copy
 
-import os
 import sys
 import sqlite3
+#imports for the database
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -31,8 +31,8 @@ def image_loader(image_name):
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
-style_img = image_loader("/Programming/PyTorch_NST/images/starrynight.jpg")
-content_img = image_loader("/Programming/PyTorch_NST/images/fox.jpg")
+style_img = image_loader("starrynight.jpg")
+content_img = image_loader("llama.jpg")
 
 assert style_img.size() == content_img.size(), \
     "You have to to import style and content images of the same size"
