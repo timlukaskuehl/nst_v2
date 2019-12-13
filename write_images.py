@@ -6,7 +6,7 @@ def readImage():
     file_input = None
 
     try:
-        file_input = open("llama.jpg", "rb")
+        file_input = open('llama.jpg', 'rb')
         img = file_input.read()
         return img
 
@@ -20,7 +20,7 @@ def read_style_image():
     file_style = None
 
     try: 
-        file_style = open("starrynight.jpg", "rb")
+        file_style = open('starrynight.jpg', 'rb')
         img_style = file_style.read()
         return img_style
     

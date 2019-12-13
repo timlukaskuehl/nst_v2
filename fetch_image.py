@@ -43,7 +43,7 @@ try:
     
     try:
         write_style_image(data)
-
+      
     finally:
         writeImage(data)
 
