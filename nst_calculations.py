@@ -14,12 +14,6 @@ import torchvision.models as models
 
 import copy
 
-import sys
-import sqlite3
-#imports for the database
-
-
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 imsize = 512 if torch.cuda.is_available() else 128  
@@ -33,8 +27,8 @@ def image_loader(image_name):
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
-style_img = image_loader("starrynight.jpg")
-content_img = image_loader("llama.jpg")
+style_img = image_loader("D:\Programming\PyTorch_NST\database_images\style.jpg")
+content_img = image_loader("D:\Programming\PyTorch_NST\database_images\content.jpg")
 
 assert style_img.size() == content_img.size(), \
     "You have to to import style and content images of the same size"
@@ -51,11 +45,11 @@ def imshow(tensor, title=None):
         plt.title(title)
     plt.pause(0.001) 
 
-plt.figure()
-imshow(style_img, title='Style Image')
+#plt.figure()
+#imshow(style_img, title='Style Image')
 
-plt.figure()
-imshow(content_img, title='Content Image')
+#plt.figure()
+#imshow(content_img, title='Content Image')
 
 class ContentLoss(nn.Module):
 
@@ -156,8 +150,8 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
     return model, style_losses, content_losses
 
 input_img = content_img.clone()
-plt.figure()
-imshow(input_img, title='Input Image')
+#plt.figure()
+#imshow(input_img, title='Input Image')
 
 def get_input_optimizer(input_img):
     optimizer = optim.LBFGS([input_img.requires_grad_()])
