@@ -1,50 +1,40 @@
-import sqlite3 as sequel
+import sqlite3
 import sys
 
-def readImage():
+def readImage(filename):
+# read the image data with the read bytes method (rb)
 
-    file_input = None
-
-    try:
-        file_input = open('llama.jpg', 'rb')
-        img = file_input.read()
-        return img
-
-    finally:
-
-        if file_input:
-            file_input.close()
-
-def read_style_image():
-
-    file_style = None
-
-    try: 
-        file_style = open('starrynight.jpg', 'rb')
-        img_style = file_style.read()
-        return img_style
+    with open(filename, 'rb') as file:
+        dataInput = file.read()
     
+    return dataInput
+
+def database_insertion(image_id, image_name, image):
+ # the goal is to give each image an id and insert the raw image data into the database table   
+    try:
+        # the database and the table with the two columns needs to be preconfigured
+        database_connection = sqlite3.connect('image_database.db')
+        cursor = database_connection.cursor()
+        print("Database connection established")
+        sql_command = """ INSERT INTO pictures
+                                  (id, name, image) VALUES (?, ?, ?)"""
+        # tells the program in which columns the data should be stored
+
+        nst_images = readImage(image)
+        # converts the image into binary
+        data_tuple = (image_id, image_name, nst_images)
+        # data is imported in a tuple format, helps us to store more information about the image at a later point
+        cursor.execute(sql_command, data_tuple)
+        # code on the database is executed
+        database_connection.commit()
+        print("Image IDs and images are now stored in the database :)")
+        cursor.close()
+
     finally:
+        if (database_connection):
+            database_connection.close()
+            print("Your connection to the database has ended. See you next time!")
+            # once all the data is written into the table, the connection is closed
 
-        if file_style:
-            file_style.close()
-
-try:
-    con = sequel.connect('image_database.db')
-
-    cur = con.cursor()
-
-    data_content = readImage()
-    data_style = read_style_image()
-    binary = sequel.Binary(data_content)
-    binary_2 = sequel.Binary(data_style)
-    cur.execute("CREATE TABLE pictures(data BLOB)")
-    cur.execute("INSERT INTO pictures(data) VALUES (?)", (binary,) )
-    cur.execute("INSERT INTO pictures(data) VALUES (?)", (binary_2,) )
-
-    con.commit()
-
-finally:
-
-    if con:
-        con.close()
+database_insertion(1, "content", "D:/Programming/PyTorch_NST/starrynight.jpg")
+database_insertion(2, "style", "D:/Programming/PyTorch_NST/llama.jpg")

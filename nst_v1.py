@@ -18,7 +18,7 @@ import sys
 import sqlite3
 #imports for the database
 
-#import fetch_image
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
