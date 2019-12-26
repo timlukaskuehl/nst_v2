@@ -11,7 +11,7 @@ def read_image_data(image_id):
     # we want to read the two images and store them back on the hard drive in a certain folder
 
     try:
-        database_connection = sqlite3.connect('image_database.db')
+        database_connection = sqlite3.connect("image_database.db")
         # we have to establish a database connection first
         cursor = database_connection.cursor()
         print("Database connection established")

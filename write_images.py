@@ -13,7 +13,7 @@ def database_insertion(image_id, image_name, image):
  # the goal is to give each image an id and insert the raw image data into the database table   
     try:
         # the database and the table with the two columns needs to be preconfigured
-        database_connection = sqlite3.connect('image_database.db')
+        database_connection = sqlite3.connect("image_database.db")
         cursor = database_connection.cursor()
         print("Database connection established")
         sql_command = """ INSERT INTO pictures
@@ -36,5 +36,5 @@ def database_insertion(image_id, image_name, image):
             print("Your connection to the database has ended. See you next time!")
             # once all the data is written into the table, the connection is closed
 
-database_insertion(1, "style", "D:/Programming/PyTorch_NST/starrynight.jpg")
-database_insertion(2, "content", "D:/Programming/PyTorch_NST/llama.jpg")
+database_insertion(1, "style", "D:/Programming/PyTorch_NST/images/starrynight.jpg")
+database_insertion(2, "content", "D:/Programming/PyTorch_NST/images/llama.jpg")

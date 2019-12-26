@@ -1,3 +1,4 @@
+#this code is not ours, it belongs to Derrick Mwiti
 from __future__ import print_function
 import tkinter as tk
 
@@ -64,7 +65,7 @@ class ContentLoss(nn.Module):
 def gram_matrix(input):
     a, b, c, d = input.size()  
 
-    features = input.view(a * b, c * d)  # resise F_XL into \hat F_XL
+    features = input.view(a * b, c * d)
 
     G = torch.mm(features, features.t()) 
 
@@ -170,7 +171,7 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
     while run[0] <= num_steps:
 
         def closure():
-            # correct the values of updated input image
+            
             input_img.data.clamp_(0, 1)
 
             optimizer.zero_grad()
