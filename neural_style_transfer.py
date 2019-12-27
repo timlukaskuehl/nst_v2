@@ -5,7 +5,7 @@ import os
 #import matplotlib.pyplot as plt
 
 root = tk.Tk()
-root.title("Neural Style Transfer - Made by Katharina and Tim")
+root.title("What would Vincent Do?")
 #initializing our root window, where all our frames will be housed
 
 def raise_frame(frame):
