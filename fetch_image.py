@@ -29,7 +29,7 @@ def read_image_data(image_id):
             image = row[2]
 
             print("Saving the images")
-            image_path = "D:\Programming\PyTorch_NST\database_images\\" + image_name + ".jpg"
+            image_path = "D:\Programming\PyTorch_NST_V2\database_images\\" + image_name + ".jpg"
             # images are renamed to their name specified in the tuple and then saved in a different folder
 
             writeImage(image, image_path)

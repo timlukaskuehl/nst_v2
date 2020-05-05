@@ -28,8 +28,8 @@ def image_loader(image_name):
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
 
-style_img = image_loader("D:\Programming\PyTorch_NST\database_images\style.jpg")
-content_img = image_loader("D:\Programming\PyTorch_NST\database_images\content.jpg")
+style_img = image_loader("D:\Programming\PyTorch_NST_V2\database_images\style.jpg")
+content_img = image_loader("D:\Programming\PyTorch_NST_V2\database_images\content.jpg")
 
 assert style_img.size() == content_img.size(), \
     "You have to to import style and content images of the same size"

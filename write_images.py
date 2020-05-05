@@ -36,5 +36,5 @@ def database_insertion(image_id, image_name, image):
             print("Your connection to the database has ended. See you next time!")
             # once all the data is written into the table, the connection is closed
 
-database_insertion(1, "style", "D:/Programming/PyTorch_NST/images/starrynight.jpg")
-database_insertion(2, "content", "D:/Programming/PyTorch_NST/images/llama.jpg")
+database_insertion(1, "style", "D:/Programming/PyTorch_NST_V2/images/starrynight.jpg")
+database_insertion(2, "content", "D:/Programming/PyTorch_NST_V2/images/llama.jpg")
