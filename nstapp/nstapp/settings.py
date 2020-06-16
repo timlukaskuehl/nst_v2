@@ -119,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = "/user_image/"
+# defines how the image can be accessed via the browser
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "nst/user_image")
+# defines where the user upload images are stored locally

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}Upload Page{% endblock %}</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+</head>
+<body>
+
+<h1 class="intro">Test</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="user_file">
+    <button type="submit">Upload file</button>
+</form><br>
+<a class="button-intro" href="/output">Next</a>
+</body>
+</html>
