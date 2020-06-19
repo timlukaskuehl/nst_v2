@@ -1,23 +1,31 @@
+from __future__ import print_function
 from django.shortcuts import render, HttpResponse, redirect
 from django.views.generic import TemplateView
 from django.conf import settings
 from nst.forms import IntroForm
 from django.core.files.storage import FileSystemStorage
 import os
-from PIL import Image
+from PIL import Image, ImageOps
+from nst.models import UserInput
 
 def upload(request):
     if request.method == "POST":
         uploaded_file = request.FILES["user_file"]
         file_system = FileSystemStorage()
         file_system.save(uploaded_file.name, uploaded_file)
-        image = Image.open(uploaded_file)
-        image.thumbnail((1200, 630))
-        image.save('image_thumbnail.jpg')
+        img = Image.open(uploaded_file)
+        size = (1200, 630)
+        img = ImageOps.fit(img, size, Image.ANTIALIAS)
+        img.save("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/content_resized.jpg")
     return render(request, "upload.html")
 
 def output(request):
-    return render(request, "output.html")
+    #os.system('nst_calculations.py')
+    form = IntroForm()
+    posts = UserInput.objects.all()
+    #print(posts)
+    args = {"form": form,"posts": posts}
+    return render(request, "output.html", args)
 
 class HomeView(TemplateView):
     # creates the home view. Whenever a user wants to access the page, this site shows up
@@ -26,6 +34,9 @@ class HomeView(TemplateView):
     def get(self, request):
         # sends a get request to show the form on the page
         form = IntroForm()
+        #posts = UserInput.objects.all()
+        #print(posts)
+        #args = {"form": form,"posts": posts}
         return render(request, self.template_name, {"form": form})
         # displays the form on the website
 

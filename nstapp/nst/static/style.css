@@ -31,3 +31,15 @@ button.button-intro {
     color: white;
     padding-top: 20px;
 }
+img.out {
+  width: 800px;
+  height: 420px;
+  border: solid 2px #ffffff;
+}
+.frame {
+  width: 800px;
+  height: 420px;
+  margin: auto;
+  padding: 20px 20px;
+  background: url("/static/images/background_output.jpg");
+}

@@ -32,7 +32,7 @@ def image_loader(image_name):
 
 
 style_img = image_loader("D:/Programming/PyTorch_NST_V2/nstapp/nst/style_image/style.jpg")
-content_img = image_loader("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/fox_big.jpg")
+content_img = image_loader("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/content_resized.jpg")
 
 assert style_img.size() == content_img.size(), \
     "You have to to import style and content images of the same size"
@@ -162,7 +162,7 @@ def get_input_optimizer(input_img):
     return optimizer
 
 def run_style_transfer(cnn, normalization_mean, normalization_std,
-                       content_img, style_img, input_img, num_steps=300,
+                       content_img, style_img, input_img, num_steps=30,
                        style_weight=1000000, content_weight=1):
    
     model, style_losses, content_losses = get_style_model_and_losses(cnn,
@@ -212,8 +212,17 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
                             content_img, style_img, input_img)
 
-plt.figure()
-imshow(output, title='Output Image')
 
-plt.ioff()
-plt.show()
+plt.figure(frameon=False, figsize=(15, 15))
+plt.axis("off")
+imshow(output)
+plt.savefig("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/export.jpg", bbox_inches='tight', pad_inches=0)
+#plt.figure()
+#imshow(output)
+
+#plt.axis("off")
+#extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
+#plt.savefig("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/export.jpg")
+
+#plt.ioff()
+#plt.show()
