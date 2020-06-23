@@ -20,10 +20,9 @@ def upload(request):
     return render(request, "upload.html")
 
 def output(request):
-    #os.system('nst_calculations.py')
+    os.system("D:/Programming/PyTorch_NST_V2/nstapp/nst/run.sh")
     form = IntroForm()
     posts = UserInput.objects.all()
-    #print(posts)
     args = {"form": form,"posts": posts}
     return render(request, "output.html", args)
 
@@ -34,9 +33,6 @@ class HomeView(TemplateView):
     def get(self, request):
         # sends a get request to show the form on the page
         form = IntroForm()
-        #posts = UserInput.objects.all()
-        #print(posts)
-        #args = {"form": form,"posts": posts}
         return render(request, self.template_name, {"form": form})
         # displays the form on the website
 

@@ -40,6 +40,8 @@ assert style_img.size() == content_img.size(), \
 unloader = transforms.ToPILImage() 
 plt.ion()
 
+print("It works")
+
 def imshow(tensor, title=None):
     image = tensor.cpu().clone() 
     image = image.squeeze(0)      
@@ -217,12 +219,3 @@ plt.figure(frameon=False, figsize=(15, 15))
 plt.axis("off")
 imshow(output)
 plt.savefig("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/export.jpg", bbox_inches='tight', pad_inches=0)
-#plt.figure()
-#imshow(output)
-
-#plt.axis("off")
-#extent = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-#plt.savefig("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/export.jpg")
-
-#plt.ioff()
-#plt.show()
