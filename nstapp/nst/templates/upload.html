@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>{% block title %}Upload Page{% endblock %}</title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
-</head>
+    <head>
+        <title>{% block title %}Upload Your Image | What would Vincent do?{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="shortcut icon" href="/static/images/icon.png">
+        <link rel="icon" type="image/png" href="/static/images/icon.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/static/images/icon.png" sizes="96x96">
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/images/icon.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/static/images/icon.png">
+        </head>
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" target="_blank" href="https://media.giphy.com/media/7vAfCgMG4OrFNXsniy/giphy.gif">
+            <img src="/static/images/Vincent_Logo.png" height="80" alt="logo" loading="lazy">
+          </a>
+        </nav>
 <body>
-
-<h1 class="intro">Test</h1>
-<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+          <div class="col"><br>
+            <h3 style="color:#ff8333;">Now that your masterpiece already has a name, it's time for the next step.</h3><br>
+            <p>On this page you can choose which image you would like the application to calculate for you. You can either use the file explorer, or just simply drag-and-drop your file into the field. Once you clicked the "Upload" button, it's time to move on to the third and final step.<br><br>If you need inspiration for amazing pictures, our friends at Unsplash are happy to help you! Just click the image on the right and the website will automatically open.</p>
+            <div class="alert alert-secondary" role="alert">
+                Please note: At the current state only .jpg uploads work with the application. More file types will be added soon!
+              </div><br>
+            <div class="custom-file">
+              <!-- we use a form to upload the file. In this case it works without a Django form and model -->
+    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="user_file">
-    <button type="submit">Upload file</button>
+    <input class="custom-file-input" type="file" name="user_file">
+    <label class="custom-file-label" for="customFile">Choose your image</label><br><br>
+    <button class="btn btn-secondary" type="submit">Upload file</button>
 </form><br>
-<a class="button-intro" href="/output">Next</a>
+</div>
+</div>
+<div class="col"><br>
+    <a href="https://unsplash.com/"target="_blank"><img src="/static/images/unsplash_logo.jpg" width="800px"></a><br><br>
+    <!-- all our buttons are simple html buttons. Buttons as Django functions are too complicated for the small function they actually have -->
+<a class="btn btn-primary btn-lg" href="/output">Run the calculations! (this might take a minute)</a>
+</div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

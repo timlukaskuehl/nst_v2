@@ -214,7 +214,7 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 output = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
                             content_img, style_img, input_img)
 
-
+#since we don't want to display the image in a plot, we decided to save it as an image and display it on the output website
 plt.figure(frameon=False, figsize=(15, 15))
 plt.axis("off")
 imshow(output)

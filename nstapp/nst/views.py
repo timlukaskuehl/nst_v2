@@ -11,16 +11,21 @@ from nst.models import UserInput
 def upload(request):
     if request.method == "POST":
         uploaded_file = request.FILES["user_file"]
+        # we don't use a model form, but instead just a file upload field
         file_system = FileSystemStorage()
+        # the django API is used in order to save the image onto the hard drive
         file_system.save(uploaded_file.name, uploaded_file)
         img = Image.open(uploaded_file)
         size = (1200, 630)
         img = ImageOps.fit(img, size, Image.ANTIALIAS)
+        # we use PIL to resize the image. ANTIALIAS makes sure we keep the 16:9 aspect ratio of the style image
         img.save("D:/Programming/PyTorch_NST_V2/nstapp/nst/user_image/content_resized.jpg")
     return render(request, "upload.html")
 
 def output(request):
+    # once the page is requested, the sh script will run and output the final image onto the hard drive
     os.system("D:/Programming/PyTorch_NST_V2/nstapp/nst/run.sh")
+    # once the calcululations are done, the website will load
     form = IntroForm()
     posts = UserInput.objects.all()
     args = {"form": form,"posts": posts}
