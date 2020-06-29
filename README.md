@@ -5,21 +5,11 @@ Powered by:
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/timlukaskuehl/nst_v2)
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
+Welcome Goghling!
+With the help of this program you can turn an image of your choice into a masterpiece, that Vincent could have drawn for you.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+# Have fun with it!
 
-# New Features!
-
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
-
-
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
+Made with ❤ by Katharina Ganschow and Tim-Lukas Kühl.
 
 Thanks to [Dillinger](https://dillinger.io/) for helping us with this markdown file! :)
